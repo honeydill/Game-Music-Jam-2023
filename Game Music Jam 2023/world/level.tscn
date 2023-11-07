@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bobxi2qd13gj2"]
+[gd_scene load_steps=14 format=3 uid="uid://bobxi2qd13gj2"]
 
+[ext_resource type="Script" path="res://world/level.gd" id="1_do2x6"]
 [ext_resource type="PackedScene" uid="uid://b0232ukkwh22v" path="res://player/player.tscn" id="1_fl3g4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt6gc"]
@@ -15,6 +16,24 @@ albedo_color = Color(0.929412, 0.831373, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5hql"]
 albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4c4m"]
+albedo_color = Color(0.462745, 0.670588, 0.772549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcpsg"]
+albedo_color = Color(0.596078, 0.294118, 0.00784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32ua4"]
+albedo_color = Color(0.596078, 0.294118, 0.00784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itryb"]
+albedo_color = Color(0, 0.211765, 0.211765, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubro0"]
+albedo_color = Color(0.258824, 0.34902, 0.34902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4vit"]
+albedo_color = Color(0.258824, 0.34902, 0.34902, 1)
+
 [sub_resource type="Environment" id="Environment_2u2nv"]
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
@@ -22,48 +41,126 @@ ambient_light_sky_contribution = 0.98
 ambient_light_energy = 0.1
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_do2x6")
 
-[node name="Floor" type="CSGBox3D" parent="."]
+[node name="Era_1" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Era_1"]
 use_collision = true
 size = Vector3(10, 0.1, 10)
 material = SubResource("StandardMaterial3D_tt6gc")
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.976672, 0, 0.214735, 0, 1, 0, -0.214735, 0, 0.976672, 2.16258, 2.45742, 9.02226)
-
-[node name="Player" parent="." instance=ExtResource("1_fl3g4")]
-
-[node name="Left Wall" type="CSGBox3D" parent="."]
+[node name="Left Wall" type="CSGBox3D" parent="Era_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, 0)
 snap = 0.577446
 use_collision = true
 size = Vector3(0.1, 10, 10)
 material = SubResource("StandardMaterial3D_l0bjc")
 
-[node name="Window" type="CSGBox3D" parent="Left Wall"]
+[node name="Window" type="CSGBox3D" parent="Era_1/Left Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57873, 0)
 snap = 0.577446
 size = Vector3(0.1, 3, 3)
 material = SubResource("StandardMaterial3D_204ib")
 
-[node name="Right Wall" type="CSGBox3D" parent="."]
+[node name="Right Wall" type="CSGBox3D" parent="Era_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
 snap = 0.577446
 use_collision = true
 size = Vector3(10, 10, 0.1)
 material = SubResource("StandardMaterial3D_m5hql")
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+[node name="SpotLight3D2" type="SpotLight3D" parent="Era_1"]
 transform = Transform3D(-4.37114e-08, 0.866025, -0.5, 0, 0.5, 0.866025, 1, 3.78552e-08, -2.18557e-08, -8.04745, 13.1854, -0.00526905)
 light_energy = 6.157
 shadow_enabled = true
 spot_range = 29.201
 spot_angle = 6.97
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Era_1"]
 transform = Transform3D(0.398749, -0.35685, 0.844782, 0, 0.921185, 0.389124, -0.91706, -0.155163, 0.367322, 12.6647, 4.10214, 3.65265)
 light_energy = 0.094
+
+[node name="Era_2" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Era_2"]
+use_collision = true
+size = Vector3(10, 0.1, 10)
+material = SubResource("StandardMaterial3D_l4c4m")
+
+[node name="Left Wall" type="CSGBox3D" parent="Era_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, 0)
+snap = 0.577446
+use_collision = true
+size = Vector3(0.1, 10, 10)
+material = SubResource("StandardMaterial3D_tcpsg")
+
+[node name="Window" type="CSGBox3D" parent="Era_2/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57873, 0)
+snap = 0.577446
+size = Vector3(0.1, 3, 3)
+material = SubResource("StandardMaterial3D_204ib")
+
+[node name="Right Wall" type="CSGBox3D" parent="Era_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
+snap = 0.577446
+use_collision = true
+size = Vector3(10, 10, 0.1)
+material = SubResource("StandardMaterial3D_32ua4")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Era_2"]
+transform = Transform3D(-4.37114e-08, 0.866025, -0.5, 0, 0.5, 0.866025, 1, 3.78552e-08, -2.18557e-08, -8.04745, 13.1854, -0.00526905)
+light_energy = 6.157
 shadow_enabled = true
+spot_range = 29.201
+spot_angle = 6.97
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Era_2"]
+transform = Transform3D(0.398749, -0.35685, 0.844782, 0, 0.921185, 0.389124, -0.91706, -0.155163, 0.367322, 12.6647, 4.10214, 3.65265)
+light_energy = 0.094
+
+[node name="Era_3" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Era_3"]
+use_collision = true
+size = Vector3(10, 0.1, 10)
+material = SubResource("StandardMaterial3D_itryb")
+
+[node name="Left Wall" type="CSGBox3D" parent="Era_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, 0)
+snap = 0.577446
+use_collision = true
+size = Vector3(0.1, 10, 10)
+material = SubResource("StandardMaterial3D_ubro0")
+
+[node name="Window" type="CSGBox3D" parent="Era_3/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57873, 0)
+snap = 0.577446
+size = Vector3(0.1, 3, 3)
+material = SubResource("StandardMaterial3D_204ib")
+
+[node name="Right Wall" type="CSGBox3D" parent="Era_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
+snap = 0.577446
+use_collision = true
+size = Vector3(10, 10, 0.1)
+material = SubResource("StandardMaterial3D_h4vit")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Era_3"]
+transform = Transform3D(-4.37114e-08, 0.866025, -0.5, 0, 0.5, 0.866025, 1, 3.78552e-08, -2.18557e-08, -8.04745, 13.1854, -0.00526905)
+light_energy = 6.157
+shadow_enabled = true
+spot_range = 29.201
+spot_angle = 6.97
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Era_3"]
+transform = Transform3D(0.398749, -0.35685, 0.844782, 0, 0.921185, 0.389124, -0.91706, -0.155163, 0.367322, 12.6647, 4.10214, 3.65265)
+light_energy = 0.094
+
+[node name="Player" parent="." instance=ExtResource("1_fl3g4")]
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.976672, 0, 0.214735, 0, 1, 0, -0.214735, 0, 0.976672, 2.16258, 2.45742, 9.02226)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2u2nv")
